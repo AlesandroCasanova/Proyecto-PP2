@@ -6,12 +6,13 @@ USE pp2;
 CREATE TABLE usuarios (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nombre VARCHAR(100) NOT NULL,
-  email VARCHAR(100) NOT NULL UNIQUE,
+  apellido VARCHAR(100) NOT NULL,
+  email VARCHAR(150) NOT NULL UNIQUE,
   contraseña VARCHAR(255) NOT NULL,
-  rol ENUM('cliente', 'profesional', 'duenio') DEFAULT 'cliente',
-  telefono VARCHAR(20),
-  fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  rol ENUM('cliente', 'empleado', 'admin') DEFAULT 'cliente',
+  fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
 
 -- Tabla de emprendimientos
 CREATE TABLE emprendimientos (

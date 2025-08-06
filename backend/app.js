@@ -13,6 +13,10 @@ app.get('/api/ping', (req, res) => {
   res.json({ mensaje: 'Servidor funcionando 🚀' });
 });
 
+const usuariosRoutes = require('./routes/usuariosRoutes');
+app.use('/api/usuarios', usuariosRoutes);
+
+
 const PORT = process.env.PORT || 3000;
 // Probar conexión a la base de datos
 db.getConnection()

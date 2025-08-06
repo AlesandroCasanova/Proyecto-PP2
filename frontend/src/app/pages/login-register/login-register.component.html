@@ -1,0 +1,44 @@
+<div class="fondo-login">
+  <div class="container" [class.right-panel-active]="!isLoginView">
+    <!-- FORMULARIO DE LOGIN -->
+    <div class="form-container sign-in-container">
+      <form (ngSubmit)="login()">
+        <h1>Iniciar sesión</h1>
+        <input type="email" placeholder="Email" [(ngModel)]="loginEmail" name="loginEmail" />
+        <input type="password" placeholder="Contraseña" [(ngModel)]="loginPassword" name="loginPassword" />
+        <p class="error" *ngIf="loginError">{{ loginError }}</p>
+        <button type="submit">Ingresar</button>
+      </form>
+    </div>
+
+    <!-- FORMULARIO DE REGISTRO -->
+    <div class="form-container sign-up-container">
+      <form (ngSubmit)="registrar()">
+        <h1>Crear cuenta</h1>
+        <input type="text" placeholder="Nombre" [(ngModel)]="nombre" name="nombre" />
+        <input type="text" placeholder="Apellido" [(ngModel)]="apellido" name="apellido" />
+        <input type="email" placeholder="Email" [(ngModel)]="email" name="email" />
+        <input type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" />
+        <input type="password" placeholder="Confirmar contraseña" [(ngModel)]="confirmarPassword" name="confirmarPassword" />
+        <p class="error" *ngIf="registroError">{{ registroError }}</p>
+        <button type="submit">Registrarse</button>
+      </form>
+    </div>
+
+    <!-- PANEL DESLIZANTE -->
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1>¿Ya tenés cuenta?</h1>
+          <p>Iniciá sesión para acceder</p>
+          <button class="ghost" (click)="toggleView()">Iniciar sesión</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1>¡Hola!</h1>
+          <p>¿Aún no tenés cuenta?</p>
+          <button class="ghost" (click)="toggleView()">Registrate</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

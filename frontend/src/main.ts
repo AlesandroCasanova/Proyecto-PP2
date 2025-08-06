@@ -1,7 +1,5 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideHttpClient } from '@angular/common/http'; // ✅ Importar
-import { LoginComponent } from './app/pages/login/login.component';
+import { AppComponent } from './app/app';
+import { appConfig } from './app/app.config';
 
-bootstrapApplication(LoginComponent, {
-  providers: [provideHttpClient()] // ✅ Agregar provider global de HttpClient
-});
+bootstrapApplication(AppComponent, appConfig);
