@@ -1,5 +1,5 @@
 /* ==== RESETEO Y FUENTE ==== */
-* {
+/** {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -57,7 +57,7 @@ body {
 
 
 /* ==== FORMULARIOS ==== */
-.form-container {
+/*.form-container {
   position: absolute;
   top: 0;
   height: 100%;
@@ -94,6 +94,7 @@ body {
 }
 
 /* ==== PANELES DE FONDO ==== */
+/*
 .overlay-container {
   position: absolute;
   top: 0;
@@ -160,6 +161,7 @@ body {
 }
 
 /* ==== INPUTS Y BOTONES ==== */
+/*
 form {
   display: flex;
   flex-direction: column;
@@ -211,6 +213,7 @@ button.ghost:hover {
 }
 
 /* ==== ERRORES ==== */
+/*
 .error {
   color: red;
   font-size: 0.9rem;
@@ -218,6 +221,7 @@ button.ghost:hover {
 }
 
 /* ==== RESPONSIVE ==== */
+/*
 @media (max-width: 768px) {
   .container {
     width: 100%;
@@ -231,3 +235,13 @@ button.ghost:hover {
     padding: 20px;
   }
 }
+
+.mensaje-exito {
+  color: #00ff9f;
+  background-color: #003d2e;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  text-align: center;
+}
+*/

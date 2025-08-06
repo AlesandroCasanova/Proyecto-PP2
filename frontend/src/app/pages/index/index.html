@@ -1,1 +1,58 @@
-<p>index works!</p>
+<div class="min-h-screen flex flex-col bg-gray-900 text-white">
+  <!-- Header -->
+<header class="flex items-center justify-between px-6 py-4 bg-cyan-800 shadow">
+  <h1 class="text-xl font-bold">¡Hola, {{ nombreUsuario }}!</h1>
+  <div class="flex gap-3">
+    <button (click)="irARegistroNegocio()" class="bg-emerald-600 hover:bg-emerald-500 px-4 py-2 rounded font-semibold">
+      Registrá tu negocio
+    </button>
+    <button (click)="logout()" class="bg-red-500 hover:bg-red-400 px-4 py-2 rounded font-semibold">
+      Cerrar sesión
+    </button>
+  </div>
+</header>
+
+
+  <!-- Filtros -->
+  <div class="p-6 bg-gray-800">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <select [(ngModel)]="filtroZona" class="bg-gray-700 p-2 rounded">
+        <option value="">Todas las zonas</option>
+        <option *ngFor="let zona of zonasDisponibles" [value]="zona">{{ zona }}</option>
+      </select>
+
+      <select [(ngModel)]="filtroRubro" class="bg-gray-700 p-2 rounded">
+        <option value="">Todos los rubros</option>
+        <option *ngFor="let rubro of rubrosDisponibles" [value]="rubro">{{ rubro }}</option>
+      </select>
+
+      <button (click)="usarUbicacion()" class="bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-2 rounded col-span-1">
+        Usar mi ubicación
+      </button>
+
+      <button (click)="limpiarFiltros()" class="text-sm underline text-gray-400 hover:text-white mt-2 md:mt-0 md:ml-auto">
+        Limpiar filtros
+      </button>
+    </div>
+  </div>
+
+  <!-- Lista de negocios -->
+  <main class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div *ngFor="let negocio of negociosFiltrados" class="bg-gray-800 rounded-lg shadow-md overflow-hidden hover:ring-2 hover:ring-cyan-500 transition">
+      <img [src]="negocio.imagen" alt="Portada" class="w-full h-40 object-cover">
+      <div class="p-4">
+        <h2 class="text-lg font-semibold">{{ negocio.nombre }}</h2>
+        <p class="text-sm text-gray-400">{{ negocio.rubro }} · {{ negocio.zona }}</p>
+        <div class="mt-2 flex items-center text-yellow-400">
+          <ng-container *ngFor="let star of getEstrellas(negocio.calificacion)">
+            <span class="material-icons text-sm">star</span>
+          </ng-container>
+          <span class="ml-2 text-sm text-gray-300">({{ negocio.calificacion }}/5)</span>
+        </div>
+        <button class="mt-4 w-full bg-cyan-500 hover:bg-cyan-400 text-black font-semibold py-2 rounded">
+          Ver perfil
+        </button>
+      </div>
+    </div>
+  </main>
+</div>
