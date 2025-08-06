@@ -1,0 +1,14 @@
+<div class="min-h-screen bg-gray-900 text-white p-6">
+  <h1 class="text-3xl font-bold mb-6 text-center">Elegí un plan para tu negocio</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div *ngFor="let plan of planes" class="bg-gray-800 rounded-lg shadow-lg p-6 flex flex-col items-center hover:ring-2 hover:ring-cyan-500 transition">
+      <h2 class="text-xl font-bold mb-2">{{ plan.nombre }}</h2>
+      <p class="text-gray-300 text-center mb-4">{{ plan.descripcion }}</p>
+      <span class="text-cyan-400 text-2xl font-semibold mb-4">${{ plan.precio }}/mes</span>
+      <button (click)="seleccionarPlan(plan)" class="bg-cyan-600 hover:bg-cyan-500 text-black font-semibold px-4 py-2 rounded">
+        Elegir este plan
+      </button>
+    </div>
+  </div>
+</div>
