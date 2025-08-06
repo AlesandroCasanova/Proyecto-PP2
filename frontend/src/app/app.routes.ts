@@ -1,7 +1,11 @@
 import { Routes } from '@angular/router';
-import { LoginRegisterComponent } from './pages/login-register/login-register.component';
+import { LoginRegister } from './pages/login-register/login-register';
+import { Dashboard } from './pages/dashboard/dashboard';
+import { Index } from './pages/index/index';
 
-export const routes: Routes = [
-  { path: '', component: LoginRegisterComponent },
-  { path: '**', redirectTo: '' }
+export const appRoutes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginRegister },
+  { path: 'dashboard', component: Dashboard },
+  { path: 'index', component: Index }
 ];

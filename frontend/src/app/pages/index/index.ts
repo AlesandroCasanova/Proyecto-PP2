@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-index',
-  imports: [],
-  templateUrl: './index.html',
-  styleUrl: './index.css'
+  standalone: true,
+  imports: [CommonModule],
+  template: `<p>Página de inicio</p>`
 })
-export class Index {
-
-}
+export class Index {}

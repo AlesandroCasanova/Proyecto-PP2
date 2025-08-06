@@ -2,16 +2,16 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-login-register',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './login-register.component.html',
-  styleUrls: ['./login-register.component.css']
+  templateUrl: './login-register.html',
+  styleUrls: ['./login-register.css']
 })
-export class LoginRegisterComponent {
+export class LoginRegister {
   // Formulario login
   loginEmail: string = '';
   loginPassword: string = '';
@@ -24,6 +24,7 @@ export class LoginRegisterComponent {
   password: string = '';
   confirmarPassword: string = '';
   registroError: string = '';
+  registroExitoso: boolean = false;
 
   // Control de vista activa
   isLoginView: boolean = true;
@@ -78,13 +79,25 @@ export class LoginRegisterComponent {
 
     this.authService.registro(data).subscribe({
       next: (res: any) => {
-        localStorage.setItem('token', res.token);
-        localStorage.setItem('usuario', JSON.stringify(res.usuario));
-        this.router.navigate(['/dashboard']);
+        this.registroExitoso = true;
+        this.clearRegistro();
+        setTimeout(() => {
+          this.registroExitoso = false;
+          this.toggleView(); // cambia automáticamente a vista de login
+        }, 3000);
       },
       error: () => {
         this.registroError = 'Error al registrar usuario';
       }
     });
+  }
+
+  private clearRegistro() {
+    this.nombre = '';
+    this.apellido = '';
+    this.email = '';
+    this.password = '';
+    this.confirmarPassword = '';
+    this.registroError = '';
   }
 }
